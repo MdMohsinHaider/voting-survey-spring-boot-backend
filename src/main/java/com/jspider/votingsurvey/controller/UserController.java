@@ -20,6 +20,5 @@ public class UserController {
 	public User saveUserController(@RequestBody User user){
 		return service.saveUser(user);	
 	}
-	
 }
 
