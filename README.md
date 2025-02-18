@@ -15,7 +15,7 @@ The **Voting Survey** project provides a RESTful API for user management, includ
 | 6    | `localhost:5173/api/user/{id}`     | PUT    | Update user details   |
 
 ## Usage
-- Ensure the backend server is running on `localhost:5173`.
+- Ensure the backend server is running on `localhost:8090`.
 - Use API testing tools like Postman or cURL to interact with the endpoints.
 
 ## Technologies Used
