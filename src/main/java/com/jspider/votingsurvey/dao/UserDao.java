@@ -39,10 +39,10 @@ public class UserDao implements UsersDao {
             // Updating fields with new values from the request body
             existingUser.setName(user.getName());
             existingUser.setEmail(user.getEmail());
+            existingUser.setPassword(user.getPassword());
             existingUser.setAge(user.getAge());
             existingUser.setGender(user.getGender());
             existingUser.setAddress(user.getAddress());
-            existingUser.setPassword(user.getPassword());
             existingUser.setConstituency(user.getConstituency());
             existingUser.setHasVoted(user.isHasVoted());
 
