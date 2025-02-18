@@ -15,7 +15,7 @@ The **Voting Survey** project provides a RESTful API for user management, includ
 | 6    | `localhost:5173/api/user/{id}`     | PUT    | Update user details   |
 
 ## Usage
-- Ensure the backend server is running on `localhost:8090`.
+- Ensure the backend server is running on `localhost:5173`.
 - Use API testing tools like Postman or cURL to interact with the endpoints.
 
 ## Technologies Used
@@ -46,4 +46,41 @@ The **Voting Survey** project provides a RESTful API for user management, includ
    ```sh
    mvn spring-boot:run
    ```
+
+## Project Structure
+```
+/votingsurvey
+│── src/main/java/com/jspider/votingsurvey
+│   │── VotingsurveyApplication.java
+│   │── controller
+│   │   └── UserController.java
+│   │── dao
+│   │   ├── UserDao.java
+│   │   └── UsersDao.java
+│   │── entity
+│   │   ├── Constituency.java
+│   │   └── User.java
+│   │── repository
+│   │   └── UserRepository.java
+│   │── services
+│   │   ├── UserService.java
+│   │   └── UsersService.java
+│── src/main/resources
+│   │── static
+│   │── templates
+│   │── application.properties
+│── src/test/java
+│── src/test/resources
+│── target/generated-sources/annotations
+│── target/generated-test-sources/test-annotations
+│── src
+│── target
+│── HELP.md
+│── mvnw
+│── mvnw.cmd
+│── pom.xml
+│── README.md
+```
+
+## Jspider
 
