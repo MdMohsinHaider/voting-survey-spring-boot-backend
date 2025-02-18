@@ -62,6 +62,9 @@ public interface UsersService {
      * @return An Optional containing the user if found, otherwise empty.
      */
     Optional<User> getUserByEmail(String email);
+    
+ // Authorization User
+ 	public boolean loginUserByVoterIdAndPassword(Long voterId, String password);
 	
 	
 }
