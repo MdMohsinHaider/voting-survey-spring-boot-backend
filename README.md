@@ -47,5 +47,3 @@ The **Voting Survey** project provides a RESTful API for user management, includ
    mvn spring-boot:run
    ```
 
-## Author
-Md Mohsin Haider
