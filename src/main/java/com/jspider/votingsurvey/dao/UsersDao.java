@@ -47,4 +47,19 @@ public interface UsersDao {
      */
     boolean deleteUserById(int id);
     
+    /**
+     * Retrieves a user by their Voter ID.
+     *
+     * @param vId The unique voter ID of the user.
+     * @return An Optional containing the user if found, otherwise empty.
+     */
+    Optional<User> getUserByVoterId(Long vId);
+    
+    /**
+     * Retrieves a user by their email.
+     *
+     * @param email The email of the user.
+     * @return An Optional containing the user if found, otherwise empty.
+     */
+    Optional<User> getUserByEmail(String email);
 }

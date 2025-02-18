@@ -63,4 +63,14 @@ public class UserDao implements UsersDao {
 		}
 		return false;
 	}
+
+	@Override
+	public Optional<User> getUserByVoterId(Long vId) {
+		return repository.findByVoterId(vId);
+	}
+
+	@Override
+    public Optional<User> getUserByEmail(String email) {
+        return repository.findByEmail(email);
+    }
 }

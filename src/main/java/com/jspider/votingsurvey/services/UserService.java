@@ -39,5 +39,16 @@ public class UserService implements UsersService {
 	public boolean deleteUserById(int id) {
 		return dao.deleteUserById(id);
 	}
+
+	@Override
+	public Optional<User> getUserByVoterId(Long vId) {
+		return dao.getUserByVoterId(vId);
+	}
+
+	@Override
+    public Optional<User> getUserByEmail(String email) {
+        return dao.getUserByEmail(email);
+    }
+	
 }
 

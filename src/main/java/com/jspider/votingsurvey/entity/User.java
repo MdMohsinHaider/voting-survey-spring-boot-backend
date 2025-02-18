@@ -20,6 +20,8 @@ public class User {
     private Long voterId;
 	
     private String name;
+    
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
     
     @Column(name = "password", nullable = false, length = 255)
