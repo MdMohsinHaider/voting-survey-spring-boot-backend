@@ -1,7 +1,6 @@
 package com.jspider.votingsurvey.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -13,7 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "constituencies")
 public class Constituency implements Serializable {
@@ -35,7 +36,6 @@ public class Constituency implements Serializable {
     private boolean isElectionActive;
 
     @OneToMany(mappedBy = "constituency", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<User> voters = new HashSet<>();
-
+    private Set<User> voters;
 
 }
