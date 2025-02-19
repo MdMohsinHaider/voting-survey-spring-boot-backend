@@ -44,7 +44,6 @@ public class UserDao implements UsersDao {
             existingUser.setGender(user.getGender());
             existingUser.setAddress(user.getAddress());
             existingUser.setConstituency(user.getConstituency());
-            existingUser.setHasVoted(user.isHasVoted());
 
             // Save the updated user to the database
             repository.save(existingUser);
