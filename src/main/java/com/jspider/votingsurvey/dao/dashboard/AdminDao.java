@@ -12,5 +12,5 @@ public interface AdminDao {
      * @param id the ID of admin
      * @return an optional containing the admin if found, otherwise empty
      */
-    Optional<Admin> getUserById(Long id);
+    Optional<Admin> getAdminByIdDao(Long id);
 }

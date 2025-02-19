@@ -14,5 +14,5 @@ public class Admin {
 	@Id
 	private Long id;
     private Long voterId;
-    private Long password;
+    private String password;
 }

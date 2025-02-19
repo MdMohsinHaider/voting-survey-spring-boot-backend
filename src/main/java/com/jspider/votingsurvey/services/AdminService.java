@@ -12,5 +12,8 @@ public interface AdminService {
      * @param id The ID of the admin.
      * @return An Optional containing the admin if found, otherwise empty.
      */
-	Optional<Admin> getUserById(Long id);
+	Optional<Admin> getAdminById(Long id);
+	
+	// Authorization User
+	public boolean authAdminByIdAndPassword(Long id, String password);
 }
