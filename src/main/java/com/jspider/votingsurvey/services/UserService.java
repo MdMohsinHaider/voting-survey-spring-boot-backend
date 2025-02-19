@@ -50,5 +50,24 @@ public class UserService implements UsersService {
         return dao.getUserByEmail(email);
     }
 	
+	
+	// Authorization User
+	@Override 									// voterId and password from client side
+	public boolean loginUserByVoterIdAndPassword(Long voterId, String password) { 
+		Optional<User> optional = getUserByVoterId(voterId);
+		if (!(optional.isPresent())) {
+			return false;
+		}
+		User user = optional.get();
+	
+		Long dbVoterId = user.getVoterId(); // From DB
+		String dbPassword = user.getPassword(); // From DB
+		
+		if (voterId.equals(dbVoterId) && password.equals(dbPassword)) {
+			return true;
+		}
+		return false;
+		
+	}
 }
 
