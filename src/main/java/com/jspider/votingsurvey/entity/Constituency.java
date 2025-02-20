@@ -1,29 +1,20 @@
 package com.jspider.votingsurvey.entity;
 
 import java.io.Serializable;
-import java.util.Set;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "constituencies")
 public class Constituency implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "constituency_id", nullable = false, unique = true)
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @Column(name = "constituency_number", nullable = false, unique = true)
     private Long id;
 
     @Column(name = "constituency_name", nullable = false, unique = true)
@@ -32,10 +23,10 @@ public class Constituency implements Serializable {
     @Column(name = "state", nullable = false)
     private String state;
 
-    @Column(name = "is_election_active", nullable = false)
-    private boolean isElectionActive;
+    @Column(name = "is_election_active", columnDefinition = "BOOLEAN")
+    private boolean electionActive;  // Renamed to avoid Lombok conflict
 
-    @OneToMany(mappedBy = "constituency", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<User> voters;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date_of_last_survey", columnDefinition = "DATE", nullable = true)
+    private LocalDate dOLS;
 }
