@@ -21,7 +21,6 @@ public class User {
 	
     private String name;
     
-    @Column(name = "email", unique = true, nullable = false)
     private String email;
     
     @Column(name = "password", nullable = false, length = 255)
@@ -33,6 +32,8 @@ public class User {
     
     @Column(name = "constituency", nullable = false)
     private String constituency;
+    
+    private Long constituencyNumber;
     
     @Column(name = "has_voted", nullable = false)
     private boolean hasVoted;

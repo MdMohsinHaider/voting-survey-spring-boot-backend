@@ -63,8 +63,16 @@ public interface UsersService {
      */
     Optional<User> getUserByEmail(String email);
     
+    public List<User> getUsersByConstituency(String constituency);
+    
  // Authorization User
  	public boolean loginUserByVoterIdAndPassword(Long voterId, String password);
+ 	
+ 	public List<User> updateVotingStatus(String constituency, boolean hasVoted);
+ 	
+ 	public User updateVotingStatusByUserVoterId(Long vId, boolean hasVoted);
+ 	
+ 	boolean resetVotesByConstituency(Long constituencyNumber);
 	
 	
 }

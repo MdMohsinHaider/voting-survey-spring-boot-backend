@@ -49,4 +49,10 @@ public interface ConstituencysService {
     public List<Constituency> getActiveConstituencies();
     
     public List<Constituency> getConstituenciesByState(String state);
+    
+ // Update election status for a specific constituency
+    public Constituency updateElectionStatus(Long id, boolean electionActive);
+    
+    
+    
 }

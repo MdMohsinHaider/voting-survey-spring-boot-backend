@@ -56,4 +56,15 @@ public class ConstituencyService implements ConstituencysService {
 		return dao.getConstituenciesByStateDao(state);
 	}
 
+	@Override
+	public Constituency updateElectionStatus(Long id, boolean electionActive) {
+		Optional<Constituency> optional = getConstituencyById(id);
+		if (optional.isPresent()) {
+			Constituency constituency = optional.get();
+			constituency.setElectionActive(electionActive);
+			if (electionActive) constituency.setDOLS(LocalDate.now());
+			return dao.saveConstituencyDao(constituency);
+		}
+		return null;
+	}
 }

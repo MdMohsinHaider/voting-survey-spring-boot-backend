@@ -69,5 +69,39 @@ public class UserService implements UsersService {
 		return false;
 		
 	}
+
+	@Override
+	public List<User> getUsersByConstituency(String constituency) {
+		return dao.getUsersByConstituencyDao(constituency);
+	}
+
+	@Override
+	public List<User> updateVotingStatus(String constituency, boolean hasVoted) {
+		List<User> userList = dao.getUsersByConstituencyDao(constituency);
+		if (!userList.isEmpty()) {
+			for (User user : userList) {
+				user.setHasVoted(hasVoted);
+			}
+			dao.saveAllUserDao(userList);
+			
+		}
+		return userList;
+	}
+
+	@Override
+	public User updateVotingStatusByUserVoterId(Long vId, boolean hasVoted) {
+		Optional<User> optional = getUserByVoterId(vId);
+		if (!(optional.isPresent())) return null;
+		
+		User user = optional.get();
+		user.setHasVoted(hasVoted);
+		dao.saveUserDao(user);
+		return user;
+	}
+
+	@Override
+	public boolean resetVotesByConstituency(Long constituencyNumber) {
+		return dao.resetVotesByConstituencyDao(constituencyNumber);
+	}
 }
 

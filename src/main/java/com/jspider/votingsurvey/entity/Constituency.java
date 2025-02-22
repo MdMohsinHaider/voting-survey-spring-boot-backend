@@ -15,7 +15,7 @@ public class Constituency implements Serializable {
 
     @Id
     @Column(name = "constituency_number", nullable = false, unique = true)
-    private Long id;
+    private Long id; // primary key
 
     @Column(name = "constituency_name", nullable = false, unique = true)
     private String name;

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jspider.votingsurvey.entity.User;
 import com.jspider.votingsurvey.repository.UserRepository;
@@ -18,6 +19,11 @@ public class UserDao implements UsersDao {
 	@Override
 	public User saveUserDao(User user) {
 		return repository.save(user);
+	}
+	
+	@Override
+	public List<User> saveAllUserDao(List<User> users) {
+		return repository.saveAll(users);
 	}
 
 	@Override
@@ -72,4 +78,17 @@ public class UserDao implements UsersDao {
     public Optional<User> getUserByEmail(String email) {
         return repository.findByEmail(email);
     }
+
+	@Override
+	public List<User> getUsersByConstituencyDao(String constituency) {
+		return repository.findByConstituency(constituency);
+	}
+
+	@Override
+	@Transactional
+	public boolean resetVotesByConstituencyDao(Long constituencyNumber) {
+		int updatedRows = repository.resetHasVotedByConstituencyNumber(constituencyNumber);
+		return updatedRows > 0;
+	}
+
 }

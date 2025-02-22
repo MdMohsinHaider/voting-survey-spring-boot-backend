@@ -16,6 +16,14 @@ public interface UsersDao {
     User saveUserDao(User user);
     
     /**
+     * Saves a user entity to the database.
+     *
+     * @param user the user entity to be saved
+     * @return the saved user entity
+     */
+    List<User> saveAllUserDao(List<User> users);
+    
+    /**
      * Retrieves all users from the database.
      *
      * @return a list of all users
@@ -62,4 +70,8 @@ public interface UsersDao {
      * @return An Optional containing the user if found, otherwise empty.
      */
     Optional<User> getUserByEmail(String email);
+    
+    List<User> getUsersByConstituencyDao(String constituency);
+    
+    boolean resetVotesByConstituencyDao(Long constituencyNumber);
 }

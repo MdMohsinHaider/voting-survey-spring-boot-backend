@@ -30,6 +30,9 @@ public class Party {
 	@Column(name = "political_parties_symbol", nullable = false)
 	private String img;
 	
+	@Column(name = "parties_candidate_img", nullable = false)
+	private String candidateImg ;
+	
 	@ManyToOne
 	@JoinColumn(name = "constituency_id", nullable = false)  // Foreign Key
 	private Constituency constituency;

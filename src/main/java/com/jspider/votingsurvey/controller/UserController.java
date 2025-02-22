@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,6 +52,11 @@ public class UserController {
 		return service.getUserByVoterId(vid);
 	}
 	
+	@GetMapping("/constituency/{constituency}")
+    public List<User> getUsersByConstituencyController(@PathVariable String constituency) {
+		return service.getUsersByConstituency(constituency);
+	}
+	
 	@DeleteMapping(value = "/{id}")
 	public boolean deleteUserById(@PathVariable int id) {
 		return service.deleteUserById(id);
@@ -72,6 +77,25 @@ public class UserController {
 	}
 
 	
+	@PutMapping(value = "/constituency/{constituency}/vote-status/{hasVoted}")
+    public List<User> updateVotingStatus(@PathVariable String constituency, @PathVariable boolean hasVoted) {
+		return service.updateVotingStatus(constituency, hasVoted);
+	}
+	
+	@PutMapping(value = "/voterId/{vid}/vote-status/{hasVoted}")
+	public User updateVotingStatusByUserVoterIdController(@PathVariable Long vid, @PathVariable boolean hasVoted) {
+		return service.updateVotingStatusByUserVoterId(vid, hasVoted);
+	}
+	
+	@PutMapping("/reset-votes/{constituencyNumber}")
+    public ResponseEntity<String> resetVotes(@PathVariable Long constituencyNumber) {
+        boolean isUpdated = service.resetVotesByConstituency(constituencyNumber);
+        if (isUpdated) {
+            return ResponseEntity.ok("Votes reset successfully for constituency: " + constituencyNumber);
+        } else {
+            return ResponseEntity.badRequest().body("No users found with hasVoted=true in constituency: " + constituencyNumber);
+        }
+    }
 }
 
 
