@@ -14,7 +14,7 @@ Java Full Stack Developer
 | S.No | Endpoint                          | Method | Description          |
 |------|----------------------------------|--------|----------------------|
 | 1    | `http://localhost:8090/api/admin/auth` | POST   | Admin login        |
-| 2    | `http://localhost:8090/api/admin/123` | GET    | Get admin by ID    |
+| 2    | `http://localhost:8090/api/admin/{id}` | GET    | Get admin by ID    |
 
 **Request Body for Admin Login:**
 ```json
@@ -26,29 +26,33 @@ Java Full Stack Developer
 
 ### User Endpoints
 
-| S.No | Endpoint                          | Method | Description             |
-|------|----------------------------------|--------|-------------------------|
-| 1    | `http://localhost:8090/api/user/register` | POST   | Register a new user    |
-| 2    | `http://localhost:8090/api/user/login`    | POST   | User login             |
-| 3    | `http://localhost:8090/api/user`          | GET    | Retrieve all users     |
-| 4    | `http://localhost:8090/api/user/{id}`     | GET    | Get user by ID        |
-| 5    | `http://localhost:8090/api/user/{id}`     | DELETE | Delete user by ID     |
-| 6    | `http://localhost:8090/api/user/{id}`     | PUT    | Update user details   |
-| 7    | `http://localhost:8090/api/user/voterId/{voterId}` | GET | Get user by voter ID |
-| 8    | `http://localhost:8090/api/user/email/{email}` | GET | Get user by email    |
+| S.No | Endpoint                          | Method | Description                                  |
+|------|----------------------------------|--------|----------------------------------------------|
+| 1    | `http://localhost:8090/api/user/register` | POST   | Register a new user                         |
+| 2    | `http://localhost:8090/api/user/login`    | POST   | User login                                  |
+| 3    | `http://localhost:8090/api/user`          | GET    | Retrieve all users                          |
+| 4    | `http://localhost:8090/api/user/{id}`     | GET    | Get user by ID                             |
+| 5    | `http://localhost:8090/api/user/{id}`     | DELETE | Delete user by ID                          |
+| 6    | `http://localhost:8090/api/user/{id}`     | PUT    | Update user details                        |
+| 7    | `http://localhost:8090/api/user/voterId/{voterId}` | GET | Get user by voter ID                      |
+| 8    | `http://localhost:8090/api/user/email/{email}` | GET | Get user by email                         |
+| 9    | `http://localhost:8090/api/user/constituency/{name}` | GET | Get users by constituency name           |
+| 10   | `http://localhost:8090/api/user/constituency/{state}/vote-status/{status}` | PUT | Update voting status for users in state |
+| 11   | `http://localhost:8090/api/user/reset-votes/{constituencyNumber}` | PUT | Reset votes by constituency number      |
+| 12   | `http://localhost:8090/api/user/voterId/{voterId}/vote-status/{status}` | PUT | Update voting status by voter ID       |
 
 **Request Body for User Registration:**
 ```json
 {
-  "voterId": 12998834,
-  "name": "Mohsin",
-  "email": "Mohsin@example.com",
-  "password": "mySecurePasswordmohsin",
-  "age": 23,
+  "voterId": 99887766554433,
+  "name": "Devil",
+  "email": "DevilLal@example.com",
+  "password": "xyz123",
+  "age": 7,
   "gender": "Male",
-  "address": "1234 Elm Street",
-  "constituency": "City District 1",
-  "hasVoted": true
+  "address": "Delhi",
+  "constituency": "South Delhi",
+  "constituencyNumber": 33
 }
 ```
 
@@ -61,7 +65,8 @@ Java Full Stack Developer
 | 3    | `http://localhost:8090/api/constituency/{id}` | GET    | Get constituency by ID          |
 | 4    | `http://localhost:8090/api/constituency/state/{state}` | GET | Get constituency by state      |
 | 5    | `http://localhost:8090/api/constituency/active` | GET | Get active constituencies      |
-| 6    | `http://localhost:8090/api/constituency/all` | POST  | Save multiple constituencies   |
+| 6    | `http://localhost:8090/api/constituency/allConstituencyByIdOrName?name={name}` | GET | Get constituency by name or ID |
+| 7    | `http://localhost:8090/api/constituency/all` | POST  | Save multiple constituencies   |
 
 **Request Body for Saving a Constituency:**
 ```json
@@ -118,8 +123,6 @@ Java Full Stack Developer
 │   │   └── UserController.java
 │   │── dao
 │   │   ├── ConstituencyDao.java
-│   │   ├── ConstituencysDao.java
-│   │   ├── UserDao.java
 │   │   ├── UsersDao.java
 │   │   └── dashboard
 │   │       ├── AdminDao.java
@@ -135,18 +138,9 @@ Java Full Stack Developer
 │   │   └── UserRepository.java
 │   │── services
 │── src/main/resources
-│   │── static
-│   │── templates
 │   │── application.properties
 │── src/test/java
-│── src/test/resources
-│── target/generated-sources/annotations
-│── target/generated-test-sources/test-annotations
-│── src
-│── target
-│── HELP.md
-│── mvnw
-│── mvnw.cmd
+│── target/
 │── pom.xml
 │── README.md
 ```
