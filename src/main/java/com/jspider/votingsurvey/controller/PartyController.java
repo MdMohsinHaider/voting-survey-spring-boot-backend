@@ -68,4 +68,11 @@ public class PartyController {
         }
 	}
 	
+	@GetMapping("/byConstituencyIdOrName")
+    public List<Party> getPartiesByConstituencyIdOrNameController(@RequestParam(required = false) Long constituencyId,
+                                  @RequestParam(required = false) String constituencyName) {
+        return service.getPartiesByConstituencyIdOrName(constituencyId, constituencyName);
+	}
+	
+	
 }

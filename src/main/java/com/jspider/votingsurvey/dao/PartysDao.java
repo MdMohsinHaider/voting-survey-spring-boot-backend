@@ -25,7 +25,9 @@ public interface PartysDao {
     
     List<Party> getActiveElectionPartiesDao();
     
-    public List<Party> getPartiesByConstituencyDao(Long constituencyId);
+    List<Party> getPartiesByConstituencyDao(Long constituencyId);
+    
+    List<Party> getPartiesByConstituencyNameDao(String constituencyName);
     
     boolean updateVotesDao(Long partyId, Long newVotes);
 }

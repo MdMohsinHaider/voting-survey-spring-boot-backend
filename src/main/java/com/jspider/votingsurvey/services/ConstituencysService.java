@@ -46,12 +46,14 @@ public interface ConstituencysService {
      */
     Optional<Constituency> getConstituencyByName(String name);
     
-    public List<Constituency> getActiveConstituencies();
+    List<Constituency> getActiveConstituencies();
     
-    public List<Constituency> getConstituenciesByState(String state);
+    List<Constituency> getConstituenciesByState(String state);
     
  // Update election status for a specific constituency
-    public Constituency updateElectionStatus(Long id, boolean electionActive);
+    Constituency updateElectionStatus(Long id, boolean electionActive);
+    
+    List<Constituency> getConstituencyByIdOrName(Long id, String name);
     
     
     

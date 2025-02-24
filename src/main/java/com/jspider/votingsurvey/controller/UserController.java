@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
 
 import com.jspider.votingsurvey.entity.User;
 import com.jspider.votingsurvey.services.UsersService;
@@ -28,9 +29,22 @@ public class UserController {
 	private UsersService service;
 	
 	@PostMapping(value = "/register")
-	public User saveUserController(@RequestBody User user){
-		return service.saveUser(user);	
+	public ResponseEntity<?> saveUserController(@RequestBody User user) {
+	    if (user.getAge() < 18) {
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("You must be at least 18 years old to register.");
+	    }
+
+	    long vid = user.getVoterId();
+	    Optional<User> optional = service.getUserByVoterId(vid);
+
+	    if (optional.isPresent()) {
+	        return ResponseEntity.status(HttpStatus.CONFLICT).body("Voter ID already exists. Please use a different Voter ID.");
+	    }
+
+	    User savedUser = service.saveUser(user);
+	    return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
 	}
+
 	
 	@GetMapping
 	public List<User> getAllUserController(){
@@ -87,15 +101,20 @@ public class UserController {
 		return service.updateVotingStatusByUserVoterId(vid, hasVoted);
 	}
 	
+//	@PutMapping("/reset-votes/{constituencyNumber}")
+//    public ResponseEntity<String> resetVotes(@PathVariable Long constituencyNumber) {
+//        boolean isUpdated = service.resetVotesByConstituency(constituencyNumber);
+//        if (isUpdated) {
+//            return ResponseEntity.ok("Votes reset successfully for constituency: " + constituencyNumber);
+//        } else {
+//            return ResponseEntity.badRequest().body("No users found with hasVoted=true in constituency: " + constituencyNumber);
+//        }
+//    }
+	
 	@PutMapping("/reset-votes/{constituencyNumber}")
-    public ResponseEntity<String> resetVotes(@PathVariable Long constituencyNumber) {
-        boolean isUpdated = service.resetVotesByConstituency(constituencyNumber);
-        if (isUpdated) {
-            return ResponseEntity.ok("Votes reset successfully for constituency: " + constituencyNumber);
-        } else {
-            return ResponseEntity.badRequest().body("No users found with hasVoted=true in constituency: " + constituencyNumber);
-        }
-    }
+	public boolean resetVotesByConstituency(@PathVariable Long constituencyNumber) {
+		return service.resetVotesByConstituency(constituencyNumber);
+	}
 }
 
 

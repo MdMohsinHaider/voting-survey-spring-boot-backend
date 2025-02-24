@@ -51,5 +51,10 @@ public class PartyDao implements PartysDao {
 	public boolean updateVotesDao(Long partyId, Long newVotes) {
 		int updatedRows = repository.updateNumberOfVotesById(partyId, newVotes);
 		return updatedRows >0;
+	}
+
+	@Override
+	public List<Party> getPartiesByConstituencyNameDao(String constituencyName) {
+		return repository.findByConstituencyName(constituencyName);
 	}	
 }

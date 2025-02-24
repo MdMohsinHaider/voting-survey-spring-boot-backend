@@ -50,5 +50,10 @@ public class ConstituencyDao implements ConstituencysDao {
 		return repository.findByState(state);
 	}
 
+	@Override
+	public List<Constituency> findConstituencyByIdOrNameDao(Long id, String name) {
+		return repository.findByIdOrNameAndElectionActive(id, name);
+	}
+
 	
 }

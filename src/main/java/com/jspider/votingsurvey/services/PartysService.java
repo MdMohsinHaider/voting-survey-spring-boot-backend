@@ -25,10 +25,13 @@ public interface PartysService {
     
     List<Party> getAllPartysByActiveConstituenciesNumber();
     
-    public List<Party> getActiveElectionParties();
+    List<Party> getActiveElectionParties();
     
-    public List<Party> getPartiesByConstituency(Long constituencyId);
+    List<Party> getPartiesByConstituency(Long constituencyId);
+    
+    List<Party> getPartiesByConstituencyIdOrName(Long constituencyId, String constituencyName);
     
     boolean updateVotes(Long partyId, Long newVotes);
+    
     
 }

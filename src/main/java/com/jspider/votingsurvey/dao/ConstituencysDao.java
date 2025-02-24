@@ -47,8 +47,11 @@ public interface ConstituencysDao {
      */
     Optional<Constituency> getConstituencyByNameDao(String name);
     
-    public List<Constituency> getActiveConstituenciesDao();
+    List<Constituency> getActiveConstituenciesDao();
     
-    public List<Constituency> getConstituenciesByStateDao(String state);
+    List<Constituency> getConstituenciesByStateDao(String state);
+    
+    // AND c.electionActive = true/false
+    List<Constituency> findConstituencyByIdOrNameDao(Long id, String name);
 
 }

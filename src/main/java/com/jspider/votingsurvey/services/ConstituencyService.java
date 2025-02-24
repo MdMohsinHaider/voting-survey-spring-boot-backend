@@ -67,4 +67,9 @@ public class ConstituencyService implements ConstituencysService {
 		}
 		return null;
 	}
+
+	@Override
+	public List<Constituency> getConstituencyByIdOrName(Long id, String name) {
+		return dao.findConstituencyByIdOrNameDao(id, name);
+	}
 }

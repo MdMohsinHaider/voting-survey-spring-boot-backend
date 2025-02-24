@@ -89,5 +89,17 @@ public class PartyService implements PartysService {
 	public boolean updateVotes(Long partyId, Long newVotes) {
 		 return dao.updateVotesDao(partyId, newVotes);
 	}
+
+	@Override
+	public List<Party> getPartiesByConstituencyIdOrName(Long constituencyId, String constituencyName) {
+		
+		if (constituencyId != null) {
+            return dao.getPartiesByConstituencyDao(constituencyId);
+        } else if (constituencyName != null && !constituencyName.isEmpty()) {
+            return dao.getPartiesByConstituencyNameDao(constituencyName);
+        }
+        return List.of(); // Return empty list if both are null
+	}
+	
 	
 }
