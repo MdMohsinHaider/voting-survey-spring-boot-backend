@@ -86,7 +86,7 @@ Java Full Stack Developer
 ## Technologies Used
 - Java (Spring Boot)
 - REST API
-- MySQL/PostgreSQL (Database)
+- MySQL (Database)
 - Hibernate (ORM)
 - Maven (Build Tool)
 - Spring Data JPA
