@@ -56,5 +56,10 @@ public class PartyDao implements PartysDao {
 	@Override
 	public List<Party> getPartiesByConstituencyNameDao(String constituencyName) {
 		return repository.findByConstituencyName(constituencyName);
+	}
+
+	@Override
+	public int resetAllPartyVotesByConstituencyIdDao(Long constituencyId) {
+		return repository.resetAllPartyVotesByConstituencyId(constituencyId);
 	}	
 }

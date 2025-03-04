@@ -33,5 +33,7 @@ public interface PartysService {
     
     boolean updateVotes(Long partyId, Long newVotes);
     
+    String resetAllPartyVotesByConstituencyId(Long constituencyId);
+    
     
 }

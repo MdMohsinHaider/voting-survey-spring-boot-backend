@@ -30,4 +30,6 @@ public interface PartysDao {
     List<Party> getPartiesByConstituencyNameDao(String constituencyName);
     
     boolean updateVotesDao(Long partyId, Long newVotes);
+    
+    int resetAllPartyVotesByConstituencyIdDao(Long constituencyId);
 }

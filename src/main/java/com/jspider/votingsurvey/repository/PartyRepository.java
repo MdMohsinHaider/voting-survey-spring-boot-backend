@@ -24,4 +24,10 @@ public interface PartyRepository extends JpaRepository<Party, Long> {
     @Transactional
     @Query("UPDATE Party p SET p.numberOfVotes = :numberOfVotes WHERE p.id = :partyId")
     int updateNumberOfVotesById(Long partyId, Long numberOfVotes);
+	
+	@Modifying
+	@Transactional
+	@Query("UPDATE Party p SET p.numberOfVotes = 0 WHERE p.constituency.id = :constituencyId")
+	int resetAllPartyVotesByConstituencyId(@Param("constituencyId") Long constituencyId);
+
 }

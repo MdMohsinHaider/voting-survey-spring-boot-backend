@@ -74,5 +74,11 @@ public class PartyController {
         return service.getPartiesByConstituencyIdOrName(constituencyId, constituencyName);
 	}
 	
+	@PutMapping("/resetVotes")
+    public ResponseEntity<String> resetVotesByConstituencyId(@RequestParam Long constituencyId) {
+        String responseMessage = service.resetAllPartyVotesByConstituencyId(constituencyId);
+        return ResponseEntity.ok(responseMessage);
+    }
+	
 	
 }

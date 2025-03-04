@@ -100,6 +100,13 @@ public class PartyService implements PartysService {
         }
         return List.of(); // Return empty list if both are null
 	}
+
+	@Override
+	public String resetAllPartyVotesByConstituencyId(Long constituencyId) {
+		int updateStatus = dao.resetAllPartyVotesByConstituencyIdDao(constituencyId);
+		return updateStatus >0 ?  "All votes reset successfully." : "Error: No parties found in this constituency.";
+		
+	}
 	
 	
 }
