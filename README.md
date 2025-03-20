@@ -7,6 +7,48 @@ The **Voting Survey** project provides a RESTful API for managing user registrat
 **Md Mohsin Haider**  
 Java Full Stack Developer
 
+## **📌 Features & Working of the Project**
+
+### **🔹 User (Voter) Functionalities**
+1️⃣ **User Registration & Login:**  
+   - New users must register with **Name, Email, Password, and Constituency**.  
+   - If already registered, users can log in and access their dashboard.  
+
+2️⃣ **User Dashboard:**  
+   - **User Details Section:** Displays the voter’s profile and constituency.  
+   - **Candidates List:** Shows all election candidates in the user's constituency when the election is live.  
+   - **Search Bar:** Allows users to search previous election results and other constituency details.  
+
+3️⃣ **Voting Process:**  
+   - Users can vote for any candidate **only during active elections**.  
+   - Once a vote is cast, the **Vote button is disabled** to prevent multiple voting.  
+   - In future elections, users can log in and vote again.  
+
+4️⃣ **Real-Time Election Results:**  
+   - Votes are updated **instantly** as users vote.  
+   - The **party with the most votes is automatically ranked first**.  
+   - Results are visible to everyone, ensuring transparency.  
+
+---
+
+### **🔴 Admin Functionalities**
+1️⃣ **Admin Login:**  
+   - Admins log in to access the election management panel.  
+
+2️⃣ **Election Management:**  
+   - **Register new candidates** for elections.  
+   - **Add constituencies** and assign candidates.  
+   - **Start or close elections** at any time.  
+
+3️⃣ **Candidate & Party Management:**  
+   - Admins can **delete candidates or parties** if needed.  
+
+4️⃣ **Monitoring Election Activities:**  
+   - Admins can **track votes in real-time**, view **which users have voted**, and monitor **total votes per candidate**.  
+   - Admins can access a **list of all constituencies** and their assigned candidates.  
+
+---
+
 ## API Endpoints
 
 ### Admin Endpoints
@@ -45,8 +87,8 @@ Java Full Stack Developer
 ```json
 {
   "voterId": 99887766554433,
-  "name": "Devil",
-  "email": "DevilLal@example.com",
+  "name": "Md Mohsin Haider",
+  "email": "mdmohsinhaider@gamil.com",
   "password": "xyz123",
   "age": 7,
   "gender": "Male",
@@ -145,5 +187,7 @@ Java Full Stack Developer
 │── README.md
 ```
 
-## Jspider
+## **👨‍💻 Developed By**
+This project was developed by **Md Mohsin Haider** as part of Java Full Stack Development using **Spring Boot (Backend)** and **React.js (Frontend)**.
+
 
