@@ -187,6 +187,11 @@ Java Full Stack Developer
 │── README.md
 ```
 
+## Working Description
+The Voting Survey project operates as a centralized online voting system where users (voters) and admins interact through RESTful APIs. The system begins with user registration, where voters submit their personal and constituency details. Once authenticated via login, users gain access to a personalized dashboard that reflects live election data based on their assigned constituency. The election lifecycle is fully managed by the admin, who can activate or close elections, register candidates, and add constituencies.
+
+When an election is live, eligible users can cast their vote for a candidate in their area, and the system ensures one vote per user by disabling the vote button post-submission. This vote is immediately reflected in real-time results visible to all users, ensuring transparency. Admins have advanced monitoring tools to view total votes per candidate, track who has voted, and manage party or candidate details dynamically. The backend system uses Spring Boot with Hibernate and JPA to interact with a MySQL or H2 database, maintaining data consistency and performance. Every functionality—from user authentication to vote tallying—is handled through well-defined API endpoints, which can be tested and integrated easily with frontend tools like React or API testers like Postman.
+
 ## **👨‍💻 Developed By**
 This project was developed by **Md Mohsin Haider** as part of Java Full Stack Development using **Spring Boot (Backend)** and **React.js (Frontend)**.
 
