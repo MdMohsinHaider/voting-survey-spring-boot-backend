@@ -121,6 +121,33 @@ Java Full Stack Developer
 }
 ```
 
+### 🏳️ Party Endpoints
+
+| S.No | Endpoint | Method | Description |
+|------|----------|--------|-------------|
+| 1 | `/api/party` | GET | Get all parties |
+| 2 | `/api/party/byConstituencyIdOrName?constituencyId=33&constituencyName=Lucknow` | GET | Get parties by constituency ID or name |
+| 3 | `/api/party/activeConstituenciePartys` | GET | Get parties in one recent active constituency |
+| 4 | `/api/party/allActiveElectionParties` | GET | Get all active election parties |
+| 5 | `/api/party/delete/{id}` | DELETE | Delete a party by ID |
+| 6 | `/api/party/constituency-number/{number}` | GET | Get all parties by constituency number |
+| 7 | `/api/party/{partyId}/votes?votes={voteCount}` | PUT | Update party vote count |
+| 8 | `/api/party` | POST | Save party and candidate |
+| 9 | `/api/party/resetVotes?constituencyId={id}` | PUT | Reset votes in a constituency |
+
+#### 📥 Sample Save Party & Candidate
+```json
+{
+  "name": "Democratic Party",
+  "candidateName": "John Doe",
+  "img": "https://example.com/images/party1.png",
+  "candidateImg": "https://example.com/images/candidate1.png",
+  "constituency": {
+    "id": 1
+  }
+}
+```
+
 ## Usage
 - Ensure the backend server is running on `localhost:8090`.
 - Use API testing tools like Postman or cURL to interact with the endpoints.
